@@ -3,6 +3,7 @@
     "name": "frontend",
     "slug": "frontend",
     "version": "1.0.0",
+    "scheme" : "adsonwheels",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,16 +16,80 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "$(PRODUCT_NAME) needs access to your Camera.",
+        "NSMicrophoneUsageDescription": "$(PRODUCT_NAME) needs access to your Microphone."
+      }
     },
     "android": {
+      "jsEngine": "hermes",
+      "softwareKeyboardLayoutMode":"pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.swapnith.frontend",
+      "buildProperties": {
+        "android": {
+          "minSdkVersion": 23,
+          "overrideLibrary": [
+            "com.google.firebase.auth",
+            "com.google.firebase.database",
+            "com.google.firebase.firestore",
+            "com.google.firebase.messaging",
+            "com.google.firebase.analytics",
+            "com.google.firebase.app",
+            "com.google.firebase.**",
+            "com.google.firebase:firebase-auth:23.0.0"
+          ]
+        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
+      [
+      "expo-build-properties",
+      {
+        "android": {
+          "minSdkVersion":23,
+          "tools:overrideLibrary": [
+            "com.google.firebase.auth",
+            "com.google.firebase.database",
+            "com.google.firebase.firestore",
+            "com.google.firebase.messaging",
+            "com.google.firebase.analytics"
+          ]
+        },
+        "ios": {
+          "deploymentTarget": "13.0"
+        }
+      }]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c0ebefb7-cb44-40b7-ba30-60ad8a6bed3b"
+      }
     }
   }
 }
