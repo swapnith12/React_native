@@ -3,14 +3,12 @@ import { View, Text, StyleSheet, ActivityIndicator, Image, Dimensions } from 're
 import { Camera, CameraType } from 'expo-camera';
 import * as FaceDetector from 'expo-face-detector';
 import { useAuth } from '../App';
-// import firebase from "firebase";
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import AdCarousel from './Ads';
 const { width, height } = Dimensions.get('window');
 
 export default function CameraPage() {
-  // const db = firebase.firestore();
   const { user, distanceTravelled } = useAuth();
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(CameraType.front);

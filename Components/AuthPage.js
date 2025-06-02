@@ -18,7 +18,7 @@ const SignIn = () => {
   const handleSignIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert('Sign-In Successful');
+      alert('Your Signed In');
     } catch (err) {
       setError(err.message);
     }
@@ -31,7 +31,7 @@ const SignIn = () => {
     }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('Registration Successful');
+      alert('Registration Done!');
     } catch (err) {
       setError(err.message);
     }

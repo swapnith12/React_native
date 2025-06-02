@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get('window');
 
 const AdCarousel = ({ ads }) => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
-  const [fadeAnim] = useState(new Animated.Value(0)); // For fading effect
+  const [fadeAnim] = useState(new Animated.Value(0)); 
 
   useEffect(() => {
     const fadeIn = () => {
@@ -23,17 +23,17 @@ const AdCarousel = ({ ads }) => {
         useNativeDriver: true,
       }).start(() => {
         setCurrentAdIndex((prevIndex) => (prevIndex + 1) % ads.length);
-        fadeIn(); // After fade-out, fade-in the new ad
+        fadeIn(); 
       });
     };
 
     const interval = setInterval(() => {
       if (ads.length > 0) {
-        fadeOut(); // Trigger the transition animation
+        fadeOut(); 
       }
     }, 5000);
 
-    fadeIn(); // Initial fade-in when the component mounts
+    fadeIn(); 
 
     return () => clearInterval(interval);
   }, [ads]);
@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    borderRadius: 20,  // Smooth rounded corners
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',  // Semi-transparent dark background for better text contrast
+    borderRadius: 20,  
+    backgroundColor: 'rgba(0, 0, 0, 0.6)', 
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   noAdsText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ff4747',  // Red color for "No ads available"
+    color: '#ff4747', 
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     padding: 10,
     borderRadius: 10,
